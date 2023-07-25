@@ -50,3 +50,4 @@ opcode  psudo           asm
 47      stb mem[[arg]]  stb [0000000]
 48      stb mem[a]      stb [a]
 
+49      
