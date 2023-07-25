@@ -10,7 +10,7 @@ class value():
     def __init__(self, startingValue, maxValue, minValue=None):
         self.Value = startingValue
         self.Max = maxValue
-        self.Min = minValue if minValue else self.Value
+        self.Min = minValue or self.Value
         self.Overflow = False
         self.Underflow = False
 
@@ -140,5 +140,52 @@ class cpu():
                 self.B.set(self.Y.get())
                 self.Y.set(temp)
                 del temp
+            case 9:
+                # inc A
+                self.A.set(self.A.get() + 1)
+            case 10:
+                # inc B
+                self.B.set(self.B.get() + 1)
+            case 11:
+                # inc X
+                self.X.set(self.X.get() + 1)
+            case 12:
+                # inc Y
+                self.Y.set(self.Y.get() + 1)
+            case 13:
+                # dec A
+                self.A.set(self.A.get() - 1)
+            case 14:
+                # dec B
+                self.B.set(self.B.get() - 1)
+            case 15:
+                # dec X
+                self.X.set(self.X.get() - 1)
+            case 16:
+                # dec y
+                self.Y.set(self.Y.get() - 1)
+            case 17:
+                # zero mem[arg]
+                self.ProgramCounter.increment() 
+                arg = self.memory[self.ProgramCounter.get()]
+                self.memory[arg] = 0
+            case 18:
+                # zero mem[a]
+                self.memory[self.A.get()] = 0
+            case 19:
+                # zero mem[b]
+                self.memory[self.B.get()] = 0
+            case 20:
+                # zero mem[[arg]]
+                self.ProgramCounter.increment()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.memory[self.memory[arg]] = 0
+            case 21:
+                # zero mem[[a]]
+                self.memory[self.memory[self.A.get()]] = 0
+            case 22:
+                # zero mem[[b]]
+                self.memory[self.memory[self.B.get()]] = 0
+
         self.ProgramCounter.increment()        
         self.updateMem()
