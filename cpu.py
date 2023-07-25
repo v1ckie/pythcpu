@@ -186,6 +186,87 @@ class cpu():
             case 22:
                 # zero mem[[b]]
                 self.memory[self.memory[self.B.get()]] = 0
+            case 23:
+                # inc mem[arg]
+                self.ProgramCounter.increment()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.memory[arg] = self.memory[arg] + 1
+            case 24:
+                # inc mem[a]
+                self.memory[self.A.get()] = self.memory[self.A.get()] + 1
+            case 25:
+                # inc mem[b]
+                self.memory[self.B.get()] = self.memory[self.B.get()] + 1
+            case 26:
+                # inc mem[[arg]]
+                self.ProgramCounter.incremet()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.memory[self.memory[arg]] = self.memory[self.memory[arg]] + 1
+            case 27:
+                # inc mem[[a]]
+                self.memory[self.memory[self.A.get()]] = self.memory[self.memory[self.A.get()]] + 1
+            case 28:
+                # inc mem[[b]]
+                self.memory[self.memory[self.B.get()]] = self.memory[self.memory[self.B.get()]] + 1
+            case 29:
+                # inc mem[arg]
+                self.ProgramCounter.increment()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.memory[arg] = self.memory[arg] - 1
+            case 30:
+                # dec mem[a]
+                self.memory[self.A.get()] = self.memory[self.A.get()] - 1
+            case 31:
+                # dec mem[b]
+                self.memory[self.B.get()] = self.memory[self.B.get()] - 1
+            case 32:
+                # dec mem[[arg]]
+                self.ProgramCounter.incremet()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.memory[self.memory[arg]] = self.memory[self.memory[arg]] - 1
+            case 33:
+                # dec mem[[a]]
+                self.memory[self.memory[self.A.get()]] = self.memory[self.memory[self.A.get()]] - 1
+            case 34:
+                # dec mem[[b]]
+                self.memory[self.memory[self.B.get()]] = self.memory[self.memory[self.B.get()]] - 1
+            case 35:
+                # lda mem[arg]
+                self.ProgramCounter.increment()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.A.set(self.memory[arg])
+            case 36:
+                # lda mem[[arg]]
+                self.ProgramCounter.increment()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.A.set(self.memory[self.memory[arg]])
+            case 37:
+                # lda mem[b]
+                self.A.set(self.memory[self.B.get()])
+            case 38:
+                # lda arg
+                self.ProgramCounter.increment()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.A.set(arg)
+            case 39:
+                # ldb mem[arg]
+                self.ProgramCounter.increment()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.B.set(self.memory[arg])
+            case 40:
+                # ldb mem[[arg]]
+                self.ProgramCounter.increment()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.B.set(self.memory[self.memory[arg]])
+            case 41:
+                # ldb mem[a]
+                self.B.set(self.memory[self.B.get()])
+            case 42:
+                # ldb arg
+                self.ProgramCounter.increment()
+                arg = bself.memory[self.ProgramCounter.get()]
+                self.B.set(arg)
+
 
         self.ProgramCounter.increment()        
         self.updateMem()

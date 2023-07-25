@@ -29,3 +29,19 @@ opcode  psudo           asm
 26      inc mem[[arg]]  inc [0000000]
 27      inc mem[[a]]    inc [[a]]
 28      inc mem[[b]]    inc [[b]]
+29      dec mem[arg]    dec 0000000
+30      dec mem[a]      dec [a]
+31      dec mem[b]      dec [b]
+32      dec mem[[arg]]  dec [0000000]
+33      dec mem[[a]]    dec [[a]]
+34      dec mem[[b]]    dec [[b]]
+
+35      lda mem[arg]    lda 0000000
+36      lda mem[[arg]]  lda [0000000]
+37      lda mem[b]      lda [b]
+38      lda arg         lda #0000000  (load the oprand into a)
+
+39      ldb mem[arg]    ldb 0000000
+40      ldb mem[[arg]]  ldb [0000000]
+41      ldb mem[a]      ldb [a]
+42      ldb arg         ldb #0000000  (load the oprand into b)
