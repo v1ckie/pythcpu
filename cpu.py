@@ -264,8 +264,34 @@ class cpu():
             case 42:
                 # ldb arg
                 self.ProgramCounter.increment()
-                arg = bself.memory[self.ProgramCounter.get()]
+                arg = self.memory[self.ProgramCounter.get()]
                 self.B.set(arg)
+            case 43:
+                # sta mem[arg]
+                self.ProgramCounter.increment()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.memory[arg] = self.A.get()
+            case 44:
+                # sta mem[[arg]]
+                self.ProgramCounter.increment()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.memory[self.memory[arg]] = self.A.get()
+            case 45:
+                # sta mem[b]
+                self.memory[self.B.get()] = self.A.get()
+            case 46:
+                # stb mem[arg]
+                self.ProgramCounter.increment()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.memory[arg] = self.B.get()
+            case 47:
+                # stb mem[[arg]]
+                self.ProgramCounter.increment()
+                arg = self.memory[self.ProgramCounter.get()]
+                self.memory[self.memory[arg]] = self.B.get()
+            case 48:
+                # stb mem[a]
+                self.memory[self.A.get()] = self.B.get()
 
 
         self.ProgramCounter.increment()        
